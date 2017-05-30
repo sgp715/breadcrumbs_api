@@ -82,7 +82,7 @@ api.add_resource(Images, '/'.join((base_api_url,"images")))
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
-    parser.add_argument("-p","--production", help="run app in production", action="store_true")
+    parser.add_argument("-p", "--production", help="run app in production", action="store_true")
     args = parser.parse_args()
     if args.production:
         app.run()
