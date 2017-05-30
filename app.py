@@ -6,6 +6,7 @@ from pprint import pprint
 from datetime import datetime
 import requests
 import base64
+import argparse
 
 
 app = Flask(__name__)
@@ -69,14 +70,21 @@ class Images(Resource):
 
         r = requests.get(base_url + '&'.join((size, location, key)))
         image = base64.b64encode(r.content) # get the binary data and encode it
-        print(image)
         return { "image": image.decode("utf-8") }
 
-api.add_resource(Coordinates, "/coordinates")
+base_api_url = "/api/v1"
+api.add_resource(Coordinates, '/'.join((base_api_url, "coordinates")))
 # api.add_resource(Coordinates, "/coordinates/<string:address>")
-api.add_resource(Crumbs, "/crumbs")
-api.add_resource(Images, "/images")
+api.add_resource(Crumbs, '/'.join((base_api_url,"crumbs")))
+api.add_resource(Images, '/'.join((base_api_url,"images")))
 
 
 if __name__ == "__main__":
-    app.run(debug="True")
+
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-p","--production", help="run app in production", action="store_true")
+    args = parser.parse_args()
+    if args.production:
+        app.run()
+    else:
+        app.run(debug="True")
