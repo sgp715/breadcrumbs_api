@@ -35,10 +35,11 @@ def get_image_crumb(lat, lng, size="600x600"):
     location = "location=" + str(lat) + ',' + str(lng)
     key = "key=" + config["key"]
 
-    r = requests.get(base_url + '&'.join((size, location, key)))
-    image = base64.b64encode(r.content)
+    image_url = base_url + '&'.join((size, location, key))
+    # r = requests.get(image_url)
+    # image = base64.b64encode(r.content)
 
-    return image.decode("utf-8")
+    return image_url # image.decode("utf-8")
 
 class Crumbs(Resource):
 
@@ -58,8 +59,14 @@ class Crumbs(Resource):
 
         return { "crumbs": [ first_crumb, second_crumb ] }
 
+class Hello(Resource):
+
+    def get(self):
+        return "I am not wearing any..."
+
 base_api_url = "/api/v1"
 api.add_resource(Crumbs, '/'.join((base_api_url,"crumbs")))
+api.add_resource(Hello, '/')
 
 if __name__ == "__main__":
 
@@ -67,6 +74,6 @@ if __name__ == "__main__":
     parser.add_argument("-p", "--production", help="run app in production", action="store_true")
     args = parser.parse_args()
     if args.production:
-        app.run()
+        app.run(port=80)
     else:
         app.run(debug="True")
