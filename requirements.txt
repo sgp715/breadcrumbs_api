@@ -100,7 +100,7 @@ six==1.10.0
 slackmojify==0.1
 software-center-aptd-plugins==0.0.0
 system-service==0.3
-tensorflow==0.12.1
+tensorflow==2.5.0
 terminado==0.6
 testpath==0.3
 traitlets==4.3.1
