@@ -31,7 +31,7 @@ httplib2==0.9.1
 idna==2.0
 imageio==2.1.2
 ipykernel==4.5.2
-ipython==2.4.1
+ipython==7.16.3
 ipython-genutils==0.1.0
 ipywidgets==5.2.2
 itsdangerous==0.24
