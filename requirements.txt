@@ -25,7 +25,7 @@ gcloud==0.17.0
 googleapis-common-protos==1.5.2
 googlemaps==2.5.0
 guacamole==0.9.2
-html5lib==0.999
+html5lib==0.999999999
 HTMLParser==0.0.2
 httplib2==0.9.1
 idna==2.0
